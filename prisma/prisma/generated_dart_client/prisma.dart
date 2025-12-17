@@ -209,6 +209,8 @@ class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
   });
 
   final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? AND;
@@ -223,6 +225,10 @@ class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final _i1.PrismaUnion<_i2.StringFilter, String>? lastname;
 
+  final _i1.PrismaUnion<_i2.StringFilter, String>? username;
+
+  final _i1.PrismaUnion<_i2.StringFilter, String>? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'AND': AND,
@@ -231,6 +237,8 @@ class UserWhereInput implements _i1.JsonConvertible<Map<String, dynamic>> {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -238,14 +246,18 @@ class UserWhereUniqueInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
   const UserWhereUniqueInput({
     this.id,
+    this.username,
     this.AND,
     this.OR,
     this.NOT,
     this.name,
     this.lastname,
+    this.password,
   });
 
   final int? id;
+
+  final String? username;
 
   final _i1.PrismaUnion<_i2.UserWhereInput, Iterable<_i2.UserWhereInput>>? AND;
 
@@ -257,19 +269,29 @@ class UserWhereUniqueInput
 
   final _i1.PrismaUnion<_i2.StringFilter, String>? lastname;
 
+  final _i1.PrismaUnion<_i2.StringFilter, String>? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
+    'username': username,
     'AND': AND,
     'OR': OR,
     'NOT': NOT,
     'name': name,
     'lastname': lastname,
+    'password': password,
   };
 }
 
 class UserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserSelect({this.id, this.name, this.lastname});
+  const UserSelect({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final bool? id;
 
@@ -277,11 +299,17 @@ class UserSelect implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final bool? lastname;
 
+  final bool? username;
+
+  final bool? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -297,7 +325,9 @@ enum SortOrder implements _i1.PrismaEnum {
 
 enum UserOrderByRelevanceFieldEnum implements _i1.PrismaEnum {
   name$._('name'),
-  lastname._('lastname');
+  lastname._('lastname'),
+  username._('username'),
+  password._('password');
 
   const UserOrderByRelevanceFieldEnum._(this.name);
 
@@ -337,6 +367,8 @@ class UserOrderByWithRelationInput
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$relevance,
   });
 
@@ -346,6 +378,10 @@ class UserOrderByWithRelationInput
 
   final _i2.SortOrder? lastname;
 
+  final _i2.SortOrder? username;
+
+  final _i2.SortOrder? password;
+
   final _i2.UserOrderByRelevanceInput? $relevance;
 
   @override
@@ -353,6 +389,8 @@ class UserOrderByWithRelationInput
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_relevance': $relevance,
   };
 }
@@ -360,7 +398,9 @@ class UserOrderByWithRelationInput
 enum UserScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
   id<int>('id', 'User'),
   name$<String>('name', 'User'),
-  lastname<String>('lastname', 'User');
+  lastname<String>('lastname', 'User'),
+  username<String>('username', 'User'),
+  password<String>('password', 'User');
 
   const UserScalar(this.name, this.model);
 
@@ -372,14 +412,28 @@ enum UserScalar<T> implements _i1.PrismaEnum, _i1.Reference<T> {
 }
 
 class UserCreateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCreateInput({required this.name, required this.lastname});
+  const UserCreateInput({
+    required this.name,
+    required this.lastname,
+    required this.username,
+    required this.password,
+  });
 
   final String name;
 
   final String lastname;
 
+  final String username;
+
+  final String password;
+
   @override
-  Map<String, dynamic> toJson() => {'name': name, 'lastname': lastname};
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'lastname': lastname,
+    'username': username,
+    'password': password,
+  };
 }
 
 class UserUncheckedCreateInput
@@ -388,6 +442,8 @@ class UserUncheckedCreateInput
     this.id,
     required this.name,
     required this.lastname,
+    required this.username,
+    required this.password,
   });
 
   final int? id;
@@ -396,11 +452,17 @@ class UserUncheckedCreateInput
 
   final String lastname;
 
+  final String username;
+
+  final String password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -420,6 +482,8 @@ class UserCreateManyInput implements _i1.JsonConvertible<Map<String, dynamic>> {
     this.id,
     required this.name,
     required this.lastname,
+    required this.username,
+    required this.password,
   });
 
   final int? id;
@@ -428,11 +492,17 @@ class UserCreateManyInput implements _i1.JsonConvertible<Map<String, dynamic>> {
 
   final String lastname;
 
+  final String username;
+
+  final String password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -447,14 +517,28 @@ class StringFieldUpdateOperationsInput
 }
 
 class UserUpdateInput implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUpdateInput({this.name, this.lastname});
+  const UserUpdateInput({
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? lastname;
 
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? username;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
   @override
-  Map<String, dynamic> toJson() => {'name': name, 'lastname': lastname};
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'lastname': lastname,
+    'username': username,
+    'password': password,
+  };
 }
 
 class IntFieldUpdateOperationsInput
@@ -489,7 +573,13 @@ class IntFieldUpdateOperationsInput
 
 class UserUncheckedUpdateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUncheckedUpdateInput({this.id, this.name, this.lastname});
+  const UserUncheckedUpdateInput({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? id;
 
@@ -497,29 +587,55 @@ class UserUncheckedUpdateInput
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? lastname;
 
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? username;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
 class UserUpdateManyMutationInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUpdateManyMutationInput({this.name, this.lastname});
+  const UserUpdateManyMutationInput({
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? name;
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? lastname;
 
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? username;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
   @override
-  Map<String, dynamic> toJson() => {'name': name, 'lastname': lastname};
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'lastname': lastname,
+    'username': username,
+    'password': password,
+  };
 }
 
 class UserUncheckedUpdateManyInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserUncheckedUpdateManyInput({this.id, this.name, this.lastname});
+  const UserUncheckedUpdateManyInput({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i1.PrismaUnion<int, _i2.IntFieldUpdateOperationsInput>? id;
 
@@ -527,11 +643,17 @@ class UserUncheckedUpdateManyInput
 
   final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? lastname;
 
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? username;
+
+  final _i1.PrismaUnion<String, _i2.StringFieldUpdateOperationsInput>? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -540,6 +662,8 @@ class UserCountAggregateOutputType {
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$all,
   });
 
@@ -548,6 +672,8 @@ class UserCountAggregateOutputType {
         id: json['id'],
         name: json['name'],
         lastname: json['lastname'],
+        username: json['username'],
+        password: json['password'],
         $all: json['_all'],
       );
 
@@ -557,12 +683,18 @@ class UserCountAggregateOutputType {
 
   final int? lastname;
 
+  final int? username;
+
+  final int? password;
+
   final int? $all;
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_all': $all,
   };
 }
@@ -590,13 +722,21 @@ class UserSumAggregateOutputType {
 }
 
 class UserMinAggregateOutputType {
-  const UserMinAggregateOutputType({this.id, this.name, this.lastname});
+  const UserMinAggregateOutputType({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   factory UserMinAggregateOutputType.fromJson(Map json) =>
       UserMinAggregateOutputType(
         id: json['id'],
         name: json['name'],
         lastname: json['lastname'],
+        username: json['username'],
+        password: json['password'],
       );
 
   final int? id;
@@ -605,21 +745,35 @@ class UserMinAggregateOutputType {
 
   final String? lastname;
 
+  final String? username;
+
+  final String? password;
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
 class UserMaxAggregateOutputType {
-  const UserMaxAggregateOutputType({this.id, this.name, this.lastname});
+  const UserMaxAggregateOutputType({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   factory UserMaxAggregateOutputType.fromJson(Map json) =>
       UserMaxAggregateOutputType(
         id: json['id'],
         name: json['name'],
         lastname: json['lastname'],
+        username: json['username'],
+        password: json['password'],
       );
 
   final int? id;
@@ -628,10 +782,16 @@ class UserMaxAggregateOutputType {
 
   final String? lastname;
 
+  final String? username;
+
+  final String? password;
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -640,6 +800,8 @@ class UserGroupByOutputType {
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$count,
     this.$avg,
     this.$sum,
@@ -651,6 +813,8 @@ class UserGroupByOutputType {
     id: json['id'],
     name: json['name'],
     lastname: json['lastname'],
+    username: json['username'],
+    password: json['password'],
     $count: json['_count'] is Map
         ? _i2.UserCountAggregateOutputType.fromJson(json['_count'])
         : null,
@@ -674,6 +838,10 @@ class UserGroupByOutputType {
 
   final String? lastname;
 
+  final String? username;
+
+  final String? password;
+
   final _i2.UserCountAggregateOutputType? $count;
 
   final _i2.UserAvgAggregateOutputType? $avg;
@@ -688,6 +856,8 @@ class UserGroupByOutputType {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_count': $count?.toJson(),
     '_avg': $avg?.toJson(),
     '_sum': $sum?.toJson(),
@@ -698,7 +868,13 @@ class UserGroupByOutputType {
 
 class UserCountOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserCountOrderByAggregateInput({this.id, this.name, this.lastname});
+  const UserCountOrderByAggregateInput({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i2.SortOrder? id;
 
@@ -706,11 +882,17 @@ class UserCountOrderByAggregateInput
 
   final _i2.SortOrder? lastname;
 
+  final _i2.SortOrder? username;
+
+  final _i2.SortOrder? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -726,7 +908,13 @@ class UserAvgOrderByAggregateInput
 
 class UserMaxOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMaxOrderByAggregateInput({this.id, this.name, this.lastname});
+  const UserMaxOrderByAggregateInput({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i2.SortOrder? id;
 
@@ -734,17 +922,29 @@ class UserMaxOrderByAggregateInput
 
   final _i2.SortOrder? lastname;
 
+  final _i2.SortOrder? username;
+
+  final _i2.SortOrder? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
 class UserMinOrderByAggregateInput
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMinOrderByAggregateInput({this.id, this.name, this.lastname});
+  const UserMinOrderByAggregateInput({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final _i2.SortOrder? id;
 
@@ -752,11 +952,17 @@ class UserMinOrderByAggregateInput
 
   final _i2.SortOrder? lastname;
 
+  final _i2.SortOrder? username;
+
+  final _i2.SortOrder? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -776,6 +982,8 @@ class UserOrderByWithAggregationInput
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$count,
     this.$avg,
     this.$max,
@@ -788,6 +996,10 @@ class UserOrderByWithAggregationInput
   final _i2.SortOrder? name;
 
   final _i2.SortOrder? lastname;
+
+  final _i2.SortOrder? username;
+
+  final _i2.SortOrder? password;
 
   final _i2.UserCountOrderByAggregateInput? $count;
 
@@ -804,6 +1016,8 @@ class UserOrderByWithAggregationInput
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_count': $count,
     '_avg': $avg,
     '_max': $max,
@@ -1126,6 +1340,8 @@ class UserScalarWhereWithAggregatesInput
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
   });
 
   final _i1.PrismaUnion<
@@ -1148,6 +1364,10 @@ class UserScalarWhereWithAggregatesInput
 
   final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? lastname;
 
+  final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? username;
+
+  final _i1.PrismaUnion<_i2.StringWithAggregatesFilter, String>? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'AND': AND,
@@ -1156,6 +1376,8 @@ class UserScalarWhereWithAggregatesInput
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -1165,6 +1387,8 @@ class UserCountAggregateOutputTypeSelect
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$all,
   });
 
@@ -1174,6 +1398,10 @@ class UserCountAggregateOutputTypeSelect
 
   final bool? lastname;
 
+  final bool? username;
+
+  final bool? password;
+
   final bool? $all;
 
   @override
@@ -1181,6 +1409,8 @@ class UserCountAggregateOutputTypeSelect
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_all': $all,
   };
 }
@@ -1237,7 +1467,13 @@ class UserGroupByOutputTypeSumArgs
 
 class UserMinAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMinAggregateOutputTypeSelect({this.id, this.name, this.lastname});
+  const UserMinAggregateOutputTypeSelect({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final bool? id;
 
@@ -1245,11 +1481,17 @@ class UserMinAggregateOutputTypeSelect
 
   final bool? lastname;
 
+  final bool? username;
+
+  final bool? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -1265,7 +1507,13 @@ class UserGroupByOutputTypeMinArgs
 
 class UserMaxAggregateOutputTypeSelect
     implements _i1.JsonConvertible<Map<String, dynamic>> {
-  const UserMaxAggregateOutputTypeSelect({this.id, this.name, this.lastname});
+  const UserMaxAggregateOutputTypeSelect({
+    this.id,
+    this.name,
+    this.lastname,
+    this.username,
+    this.password,
+  });
 
   final bool? id;
 
@@ -1273,11 +1521,17 @@ class UserMaxAggregateOutputTypeSelect
 
   final bool? lastname;
 
+  final bool? username;
+
+  final bool? password;
+
   @override
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
 
@@ -1297,6 +1551,8 @@ class UserGroupByOutputTypeSelect
     this.id,
     this.name,
     this.lastname,
+    this.username,
+    this.password,
     this.$count,
     this.$avg,
     this.$sum,
@@ -1309,6 +1565,10 @@ class UserGroupByOutputTypeSelect
   final bool? name;
 
   final bool? lastname;
+
+  final bool? username;
+
+  final bool? password;
 
   final _i1.PrismaUnion<bool, _i2.UserGroupByOutputTypeCountArgs>? $count;
 
@@ -1325,6 +1585,8 @@ class UserGroupByOutputTypeSelect
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
     '_count': $count,
     '_avg': $avg,
     '_sum': $sum,

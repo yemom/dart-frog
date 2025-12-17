@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 
 generator client {
-  provider = "dart run orm --prisma-cmd=npx prisma"  
+  provider = "dart run orm --prisma-cmd=npx prisma"
   output   = "prisma/generated_dart_client"
 }
 
@@ -9,8 +9,11 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id    Int     @id @default(autoincrement())
-  name String
-  lastname  String
+  id       Int    @id @default(autoincrement())
+  name     String
+  lastname String
+  username String @unique
+  password String
 }

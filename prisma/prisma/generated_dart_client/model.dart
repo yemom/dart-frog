@@ -1,8 +1,13 @@
 class User {
-  const User({this.id, this.name, this.lastname});
+  const User({this.id, this.name, this.lastname, this.username, this.password});
 
-  factory User.fromJson(Map json) =>
-      User(id: json['id'], name: json['name'], lastname: json['lastname']);
+  factory User.fromJson(Map json) => User(
+    id: json['id'],
+    name: json['name'],
+    lastname: json['lastname'],
+    username: json['username'],
+    password: json['password'],
+  );
 
   final int? id;
 
@@ -10,9 +15,15 @@ class User {
 
   final String? lastname;
 
+  final String? username;
+
+  final String? password;
+
   Map<String, dynamic> toJson() => {
     'id': id,
     'name': name,
     'lastname': lastname,
+    'username': username,
+    'password': password,
   };
 }
