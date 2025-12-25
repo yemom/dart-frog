@@ -586,10 +586,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     schema:
         '// This is your Prisma schema file,\n\ngenerator client {\n  provider = "dart run orm --prisma-cmd=npx prisma"\n  output   = "prisma/generated_dart_client"\n}\n\ndatasource db {\n  provider = "mysql"\n  url      = env("DATABASE_URL")\n}\n\nmodel User {\n  id       Int    @id @default(autoincrement())\n  name     String\n  lastname String\n  username String @unique\n  password String\n}\n',
     datasources: const {
-      'db': _i1.Datasource(
-        _i1.DatasourceType.url,
-        'mysql://root:1221@localhost:3306/mydb?schema=public',
-      ),
+      'db': _i1.Datasource(_i1.DatasourceType.environment, 'DATABASE_URL'),
     },
     options: $options,
   );

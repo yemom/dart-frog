@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_frog/dart_frog.dart';
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import '../../prisma/prisma/generated_dart_client/user_repository.dart';
 
 Future<Response> onRequest(RequestContext context) async {
@@ -27,8 +28,10 @@ Future<Response> _authUser(RequestContext context) async {
   if (user == null) {
     return Response.json(
       body: {'error': 'User not found or password is incorrect'},
-      statusCode: HttpStatus.unauthorized,
+      statusCode: HttpStatus.notFound,
     );
   }
-  return Response.json(body: {'message': 'User authenticated', 'user': user});
+  final jwt = JWT(user.id);
+  final token = jwt.sign(SecretKey('1221'));
+  return Response.json(body: {'message': 'User authenticated', 'user': user, 'token': token});
 }

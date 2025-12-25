@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:orm/orm.dart' as orm;
+import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
 import 'client.dart';
 import 'model.dart';
@@ -55,5 +56,14 @@ class UserRepository {
   String _hashedPassword(String password) {
     final encodedPassword = utf8.encode(password);
     return sha256.convert(encodedPassword).toString();
+  }
+}
+
+int? fetchUserFromToken(String token) {
+  try {
+    final jwt = JWT.verify(token, SecretKey('1221'));
+    return jwt.payload['userId'] as int;
+  } on JWTException catch (_) {
+    return null;
   }
 }
