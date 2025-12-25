@@ -11,7 +11,7 @@ import 'prisma.dart';
 class UserRepository {
   UserRepository(this._db);
   final PrismaClient _db;
-
+// log in th existing user check whatever the user is exist or not
   Future<User?> authUser({
     required String username,
     required String password,
@@ -28,7 +28,7 @@ class UserRepository {
     }
     return user;
   }
-
+// create a new user 
   Future<User?> createUser({
     required String name,
     required String lastname,
@@ -47,18 +47,18 @@ class UserRepository {
     );
     return user;
   }
-
+//get all the user
   Future<List<User>> getAll() async {
     final list = await _db.user.findMany();
     return list.toList();
   }
-
+//hash the password
   String _hashedPassword(String password) {
     final encodedPassword = utf8.encode(password);
     return sha256.convert(encodedPassword).toString();
   }
 }
-
+//fetch user token
 int? fetchUserFromToken(String token) {
   try {
     final jwt = JWT.verify(token, SecretKey('1221'));
